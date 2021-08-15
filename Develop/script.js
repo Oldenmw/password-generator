@@ -1,12 +1,13 @@
 // Assignment code here
-var length = 8;
+var pwLength = 8;
 var lowercase = "abcdefghijklmnopqrstuvwxyz";
 var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
 var symbols = " !@#$%^&*()_-+=,.<>?~`/;:";
+var charCount = "";
 
 var characterSelect = function() {
-  var charCount = ""
+  var charCount = "";
   var lowercaseConfirm = window.confirm("Would you like to include lowercase letters?");
   if (lowercaseConfirm) {
     var charCount = charCount.concat(lowercase);
@@ -32,20 +33,28 @@ var characterSelect = function() {
     return charCount;
   }
 }
+
 var generatePassword = function() {
   //get password length
-  length = window.prompt("How many characters would you like your password to be? Choose between 8 and 128 characters.");
-  length = parseInt(length);
-  console.log(length);
+  pwLength = window.prompt("How many characters would you like your password to be? Choose between 8 and 128 characters.");
+  pwLength = parseInt(pwLength);
 
-  if (!length || length < 8 || length > 128) {
+  if (!pwLength || pwLength < 8 || pwLength > 128) {
     window.alert("Please enter a whole number between 8 and 128.")
     generatePassword();
   };
 
   //ask if user wants uppercase/lowercase/numbers/symbols
-  characterSelect();
-
+  var charCount = characterSelect();
+  console.log(charCount);
+  var password = "";
+  //generate password
+  var newChar = "";
+  for (i = 0; i < pwLength; i++) {
+    newChar = charCount.charAt(Math.floor(Math.random() * charCount.length));
+    password = password.concat(newChar);
+    console.log(password);
+  };
 }
 
 // Get references to the #generate element
