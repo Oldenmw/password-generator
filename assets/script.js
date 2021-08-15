@@ -27,7 +27,7 @@ var characterSelect = function() {
   console.log(charCount);
   if (!charCount) {
     window.alert("Please choose at least one character type.");
-    characterSelect();
+    return characterSelect();
   }
   else {
     return charCount;
@@ -41,7 +41,7 @@ var generatePassword = function() {
 
   if (!pwLength || pwLength < 8 || pwLength > 128) {
     window.alert("Please enter a whole number between 8 and 128.")
-    generatePassword();
+    return generatePassword();
   };
 
   //ask if user wants uppercase/lowercase/numbers/symbols
@@ -67,7 +67,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
+  console.log(passwordText)
 }
 
 // Add event listener to generate button
