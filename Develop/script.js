@@ -55,6 +55,7 @@ var generatePassword = function() {
     password = password.concat(newChar);
     console.log(password);
   };
+  return password;
 }
 
 // Get references to the #generate element
