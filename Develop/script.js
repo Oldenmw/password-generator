@@ -5,6 +5,33 @@ var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numbers = "0123456789";
 var symbols = " !@#$%^&*()_-+=,.<>?~`/;:";
 
+var characterSelect = function() {
+  var charCount = ""
+  var lowercaseConfirm = window.confirm("Would you like to include lowercase letters?");
+  if (lowercaseConfirm) {
+    var charCount = charCount.concat(lowercase);
+  }
+  var uppercaseConfirm = window.confirm("Would you like to include uppercase letters?");
+  if (uppercaseConfirm) {
+    var charCount = charCount.concat(uppercase);
+  }
+  var numbersConfirm = window.confirm("Would you like to include numbers?");
+  if (numbersConfirm) {
+    var charCount = charCount.concat(numbers);
+  }
+  var symbolsConfirm = window.confirm("Would you like to include symbols?");
+  if (symbolsConfirm) {
+    var charCount = charCount.concat(symbols);
+  }
+  console.log(charCount);
+  if (!charCount) {
+    window.alert("Please choose at least one character type.");
+    characterSelect();
+  }
+  else {
+    return charCount;
+  }
+}
 var generatePassword = function() {
   //get password length
   length = window.prompt("How many characters would you like your password to be? Choose between 8 and 128 characters.");
@@ -17,7 +44,8 @@ var generatePassword = function() {
   };
 
   //ask if user wants uppercase/lowercase/numbers/symbols
-  
+  characterSelect();
+
 }
 
 // Get references to the #generate element
